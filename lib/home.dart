@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'constants.dart';
-import 'package:audioplayers/audio_cache.dart';
 import 'package:provider/provider.dart';
 import 'model.dart';
 import 'button.dart';
@@ -26,6 +25,7 @@ class _MyBodyState extends State<MyBody> {
   void initState() {
     super.initState();
     Provider.of<Locker>(context, listen: false).generatePassCode();
+    Provider.of<Locker>(context, listen: false).loadAudioAssets();
   }
 
   @override
@@ -62,8 +62,6 @@ class _MyBodyState extends State<MyBody> {
                   Provider.of<Locker>(context, listen: false).a.toDouble(),
               onChanged: (val) {
                 Provider.of<Locker>(context, listen: false).a = val;
-//                player.play(Provider.of<Locker>(context, listen: false).aSound,
-//                    mode: PlayerMode.LOW_LATENCY);
                 Provider.of<Locker>(context, listen: false).playASound();
               },
             ),
@@ -73,8 +71,6 @@ class _MyBodyState extends State<MyBody> {
                   Provider.of<Locker>(context, listen: false).b.toDouble(),
               onChanged: (val) {
                 Provider.of<Locker>(context, listen: false).b = val;
-//                player.play(Provider.of<Locker>(context, listen: false).bSound,
-//
                 Provider.of<Locker>(context, listen: false).playBSound();
               },
             ),
@@ -84,8 +80,6 @@ class _MyBodyState extends State<MyBody> {
                   Provider.of<Locker>(context, listen: false).c.toDouble(),
               onChanged: (val) {
                 Provider.of<Locker>(context, listen: false).c = val;
-//                player.play(Provider.of<Locker>(context, listen: false).cSound,
-//                    mode: PlayerMode.LOW_LATENCY);
                 Provider.of<Locker>(context, listen: false).playCSound();
               },
             ),

@@ -5,8 +5,13 @@ import 'package:audioplayers/audio_cache.dart';
 
 class Locker extends ChangeNotifier {
   final _player = AudioCache();
+
+  // make sure to load the assets through the loadAudioAsset function
   final String _soundA = 'Safe-Click-1.wav';
   final String _soundB = 'Safe-Click-4.wav';
+  final String _correctSound = 'correct.wav';
+  final String _wrongSound = 'wrong.wav';
+
   final int _maxSliderRange = 30;
 
   // _inputCodes is also the initial values of the sliders
@@ -18,10 +23,6 @@ class Locker extends ChangeNotifier {
   int get a => _inputCodes[0];
   int get b => _inputCodes[1];
   int get c => _inputCodes[2];
-
-//  String get aSound => (_passCode[0] == _inputCodes[0]) ? _soundA : _soundB;
-//  String get bSound => (_passCode[1] == _inputCodes[1]) ? _soundA : _soundB;
-//  String get cSound => (_passCode[2] == _inputCodes[2]) ? _soundA : _soundB;
 
   void playASound() => lowLatencyPlayer(0);
   void playBSound() => lowLatencyPlayer(1);
@@ -40,6 +41,10 @@ class Locker extends ChangeNotifier {
   set c(int val) {
     _inputCodes[2] = val;
     notifyListeners();
+  }
+
+  void loadAudioAssets() {
+    _player.loadAll([_soundA, _soundB, _correctSound, _wrongSound]);
   }
 
   void lowLatencyPlayer(int index) {
@@ -67,11 +72,11 @@ class Locker extends ChangeNotifier {
       }
     }
     if (x == 3) {
-      _player.play('correct.wav');
+      _player.play(_correctSound);
       generatePassCode();
       return LockerState.unlocked;
     } else {
-      _player.play('wrong.wav');
+      _player.play(_wrongSound);
       return LockerState.locked;
     }
   }
