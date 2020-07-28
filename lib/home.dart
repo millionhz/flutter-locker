@@ -22,6 +22,8 @@ class MyBody extends StatefulWidget {
 }
 
 class _MyBodyState extends State<MyBody> {
+  
+  @override
   void initState() {
     super.initState();
     Provider.of<Locker>(context, listen: false).generatePassCode();
