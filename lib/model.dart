@@ -2,7 +2,6 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:audioplayers/audio_cache.dart';
-import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 class Locker extends ChangeNotifier {
   final _player = AudioCache();
