@@ -22,17 +22,10 @@ class MyRoundedButton extends StatelessWidget {
           LockerState lockerState =
               Provider.of<Locker>(context, listen: false).unlock();
           if (lockerState == LockerState.unlocked) {
-//            Navigator.of(context).pushAndRemoveUntil(
-//                MaterialPageRoute(builder: (context) => MyAppHome()),
-//                ModalRoute.withName('/'));
             Navigator.of(context).pushReplacement(PageTransition(
-                    child: MyAppHome(),
-                    type: PageTransitionType.fade,
-                    duration: Duration(milliseconds: 600))
-//              MaterialPageRoute(
-//                builder: (context) => MyAppHome(),
-//              ),
-                );
+                child: MyAppHome(),
+                type: PageTransitionType.fade,
+                duration: Duration(milliseconds: 600)));
           } else if (lockerState == LockerState.locked) {
             Scaffold.of(context).showSnackBar(SnackBar(
               content: Text(
@@ -50,28 +43,6 @@ class MyRoundedButton extends StatelessWidget {
                       BorderRadius.vertical(top: Radius.circular(20))),
             ));
           }
-          // old snackBar
-//          Scaffold.of(context).showSnackBar(
-//            SnackBar(
-//              content: Text(
-//                (lockerState == LockerState.locked)
-//                    ? lockerStillLockedMessage
-//                    : lockerOpenMessage,
-//                style: TextStyle(
-//                    color: kLight,
-//                    fontWeight: FontWeight.w600,
-//                    fontSize: 16,
-//                    fontFamily: 'Quicksand'),
-//              ),
-//              backgroundColor: kDark,
-//              duration: (lockerState == LockerState.locked)
-//                  ? Duration(milliseconds: 650)
-//                  : Duration(milliseconds: 3500),
-//              shape: RoundedRectangleBorder(
-//                  borderRadius:
-//                      BorderRadius.vertical(top: Radius.circular(20))),
-//            ),
-//          );
         },
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(70)),
         fillColor: kDark,

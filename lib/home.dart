@@ -74,29 +74,35 @@ class MyBody extends StatelessWidget {
           children: <Widget>[
             MySlider(
               size: MediaQuery.of(context).size.width - 50,
-              initialValue:
-                  Provider.of<Locker>(context, listen: false).a.toDouble(),
-              onChanged: (val) {
+              initialValue: Provider.of<Locker>(context, listen: false).aDouble,
+              onChangedInt: (val) {
                 Provider.of<Locker>(context, listen: false).a = val;
                 Provider.of<Locker>(context, listen: false).playASound();
+              },
+              onChangedDouble: (val) {
+                Provider.of<Locker>(context, listen: false).aDouble = val;
               },
             ),
             MySlider(
               size: MediaQuery.of(context).size.width - 150,
-              initialValue:
-                  Provider.of<Locker>(context, listen: false).b.toDouble(),
-              onChanged: (val) {
+              initialValue: Provider.of<Locker>(context, listen: false).bDouble,
+              onChangedInt: (val) {
                 Provider.of<Locker>(context, listen: false).b = val;
                 Provider.of<Locker>(context, listen: false).playBSound();
+              },
+              onChangedDouble: (val) {
+                Provider.of<Locker>(context, listen: false).bDouble = val;
               },
             ),
             MySlider(
               size: MediaQuery.of(context).size.width - 250,
-              initialValue:
-                  Provider.of<Locker>(context, listen: false).c.toDouble(),
-              onChanged: (val) {
+              initialValue: Provider.of<Locker>(context, listen: false).cDouble,
+              onChangedInt: (val) {
                 Provider.of<Locker>(context, listen: false).c = val;
                 Provider.of<Locker>(context, listen: false).playCSound();
+              },
+              onChangedDouble: (val) {
+                Provider.of<Locker>(context, listen: false).cDouble = val;
               },
             ),
           ],

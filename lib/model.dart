@@ -2,6 +2,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:audioplayers/audio_cache.dart';
+import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 
 class Locker extends ChangeNotifier {
   final _player = AudioCache();
@@ -15,7 +16,11 @@ class Locker extends ChangeNotifier {
   final int _maxSliderRange = 40;
 
   // _inputCodes is also the initial values of the sliders
-  List<int> _inputCodes = [22, 20, 18];
+  List<int> _inputCodes = [26, 21, 15];
+
+  // double values are for the sliders
+  List<double> _inputCodesDouble = [26, 21, 15];
+
   List<int> _passCode = [0, 0, 0];
 
   int get maxSliderRange => _maxSliderRange;
@@ -23,10 +28,6 @@ class Locker extends ChangeNotifier {
   int get a => _inputCodes[0];
   int get b => _inputCodes[1];
   int get c => _inputCodes[2];
-
-  void playASound() => lowLatencyPlayer(0);
-  void playBSound() => lowLatencyPlayer(1);
-  void playCSound() => lowLatencyPlayer(2);
 
   set a(int val) {
     _inputCodes[0] = val;
@@ -43,6 +44,34 @@ class Locker extends ChangeNotifier {
     notifyListeners();
   }
 
+  double get aDouble => _inputCodesDouble[0];
+  double get bDouble => _inputCodesDouble[1];
+  double get cDouble => _inputCodesDouble[2];
+
+  set aDouble(double val) {
+    _inputCodesDouble[0] = val;
+//    notifyListeners();
+  }
+
+  set bDouble(double val) {
+    _inputCodesDouble[1] = val;
+//    notifyListeners();
+  }
+
+  set cDouble(double val) {
+    _inputCodesDouble[2] = val;
+//    notifyListeners();
+  }
+
+  void playASound() => lowLatencyPlayer(0);
+  void playBSound() => lowLatencyPlayer(1);
+  void playCSound() => lowLatencyPlayer(2);
+
+//  void printForDebug() {
+//    print('inputCodesDouble: $_inputCodesDouble');
+//    print('inputCodes: $_inputCodes');
+//  }
+
   void loadAudioAssets() {
     _player.loadAll([_soundA, _soundB, _correctSound, _wrongSound]);
   }
@@ -53,6 +82,7 @@ class Locker extends ChangeNotifier {
     } else {
       _player.play(_soundB, mode: PlayerMode.LOW_LATENCY);
     }
+//    printForDebug();
   }
 
   void generatePassCode() {
@@ -61,6 +91,12 @@ class Locker extends ChangeNotifier {
       _newPassCode.add(Random().nextInt(maxSliderRange + 1));
     }
     _passCode = _newPassCode.cast();
+
+    for (int x in _passCode) {
+      assert(x <= _maxSliderRange,
+          'max value of passcode is more than max value of the sliders');
+    }
+
     print(_passCode);
   }
 
@@ -83,3 +119,11 @@ class Locker extends ChangeNotifier {
 }
 
 enum LockerState { unlocked, locked }
+
+// what is _inputCodesDouble?
+// The SleekCircularSlider outputs values as doubles but the locker processes the
+// values as ints so a way to have both ints and doubles was necessary. So I implemented
+// _inputCodesDouble. This list stores the double values of the sliders and is only
+// used when a new page is pushed and the sliders need an initial value for initialization.
+// the _inputCodes on the other hand stores ints and this list is used in the locking
+// and unlocking mechanism.
