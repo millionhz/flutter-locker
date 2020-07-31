@@ -61,7 +61,7 @@ class Locker extends ChangeNotifier {
       _newPassCode.add(Random().nextInt(maxSliderRange + 1));
     }
     _passCode = _newPassCode.cast();
-//    print(_passCode);
+    print(_passCode);
   }
 
   LockerState unlock() {
@@ -73,7 +73,7 @@ class Locker extends ChangeNotifier {
     }
     if (x == 3) {
       _player.play(_correctSound);
-      generatePassCode();
+//      generatePassCode();
       return LockerState.unlocked;
     } else {
       _player.play(_wrongSound);

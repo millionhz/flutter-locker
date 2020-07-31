@@ -1,12 +1,34 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'package:provider/provider.dart';
 import 'model.dart';
 import 'button.dart';
-import 'slider.dart';
-import 'top_cicle.dart';
+import 'slider_template.dart';
+import 'top_circle.dart';
 
-class MyAppHome extends StatelessWidget {
+class MyAppHome extends StatefulWidget {
+  @override
+  _MyAppHomeState createState() => _MyAppHomeState();
+}
+
+class _MyAppHomeState extends State<MyAppHome> {
+  void selectColor() {
+    int index = Random().nextInt(colorList.length);
+    List<Color> chosenColorSet = colorList[index];
+    kLight = chosenColorSet[0];
+    kDark = chosenColorSet[1];
+    kDarkLow = chosenColorSet[2];
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<Locker>(context, listen: false).generatePassCode();
+    Provider.of<Locker>(context, listen: false).loadAudioAssets();
+    selectColor();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,20 +38,7 @@ class MyAppHome extends StatelessWidget {
   }
 }
 
-class MyBody extends StatefulWidget {
-  @override
-  _MyBodyState createState() => _MyBodyState();
-}
-
-class _MyBodyState extends State<MyBody> {
-  
-  @override
-  void initState() {
-    super.initState();
-    Provider.of<Locker>(context, listen: false).generatePassCode();
-    Provider.of<Locker>(context, listen: false).loadAudioAssets();
-  }
-
+class MyBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(

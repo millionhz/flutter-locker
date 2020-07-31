@@ -11,8 +11,6 @@ const List<List<Color>> colorList = [
   [Color(0xFF13315c), Color(0xFFeef4ed), Color(0x66eef4ed)],
   [Color(0xFFf5e3e0), Color(0xFF6e4555), Color(0x666e4555)],
   [Color(0xFF6e4555), Color(0xFFf5e3e0), Color(0x66f5e3e0)],
-  [Color(0xFFf7d1cd), Color(0xFF735d78), Color(0x66735d78)],
-  [Color(0xFF735d78), Color(0xFFf7d1cd), Color(0x66f7d1cd)],
   [Color(0xFFfefae0), Color(0xFF283618), Color(0x66283618)],
   [Color(0xFF283618), Color(0xFFfefae0), Color(0x66fefae0)],
   [Color(0xFFf2d7ee), Color(0xFF69306d), Color(0x6669306d)],
