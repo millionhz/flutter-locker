@@ -1,6 +1,6 @@
 import 'package:Locker/home.dart';
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import 'color_control.dart';
 import 'package:provider/provider.dart';
 import 'model.dart';
 import 'package:page_transition/page_transition.dart';
@@ -28,7 +28,7 @@ class MyRoundedButton extends StatelessWidget {
             Navigator.of(context).pushReplacement(PageTransition(
                     child: MyAppHome(),
                     type: PageTransitionType.fade,
-                    duration: Duration(milliseconds: 700))
+                    duration: Duration(milliseconds: 600))
 //              MaterialPageRoute(
 //                builder: (context) => MyAppHome(),
 //              ),

@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import 'color_control.dart';
 import 'package:provider/provider.dart';
 import 'model.dart';
 import 'button.dart';
@@ -13,9 +13,14 @@ class MyAppHome extends StatefulWidget {
 }
 
 class _MyAppHomeState extends State<MyAppHome> {
+  // selectColor can be moved to model but im going to leave it here for now
   void selectColor() {
-    int index = Random().nextInt(colorList.length);
-    List<Color> chosenColorSet = colorList[index];
+    // to prevent color scheme repetition
+    while (newIndex == indexInUse) {
+      newIndex = Random().nextInt(kColorList.length);
+    }
+    indexInUse = newIndex;
+    List<Color> chosenColorSet = kColorList[indexInUse];
     kLight = chosenColorSet[0];
     kDark = chosenColorSet[1];
     kDarkLow = chosenColorSet[2];

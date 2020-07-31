@@ -12,7 +12,7 @@ class Locker extends ChangeNotifier {
   final String _correctSound = 'correct.wav';
   final String _wrongSound = 'wrong.wav';
 
-  final int _maxSliderRange = 30;
+  final int _maxSliderRange = 40;
 
   // _inputCodes is also the initial values of the sliders
   List<int> _inputCodes = [22, 20, 18];
