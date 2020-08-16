@@ -30,9 +30,9 @@ class Locker extends ChangeNotifier {
   }
 
   void debugLog() {
-    print(_inputCodes);
-    print(_inputCodesDouble);
-    print(_passCode);
+    print("Input Codes int: $_inputCodes");
+    print("Input Codes double: $_inputCodesDouble");
+    print("Pass Code: $_passCode");
   }
 
   List<int> _passCode = [0, 0, 0];
@@ -82,10 +82,7 @@ class Locker extends ChangeNotifier {
   void playCSound() => lowLatencyPlayer(2);
 
   void loadAudioAssets() async {
-    // TODO: remove debug printing
-    dynamic x =
-        await _player.loadAll([_soundA, _soundB, _correctSound, _wrongSound]);
-    print(x);
+    await _player.loadAll([_soundA, _soundB, _correctSound, _wrongSound]);
   }
 
   void lowLatencyPlayer(int index) {
@@ -94,7 +91,6 @@ class Locker extends ChangeNotifier {
     } else {
       _player.play(_soundB, mode: PlayerMode.LOW_LATENCY);
     }
-//    printForDebug();
   }
 
   void generatePassCode() {

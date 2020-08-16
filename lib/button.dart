@@ -13,7 +13,7 @@ class MyRoundedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 20),
+      padding: EdgeInsets.only(bottom: 18),
       // TODO: Implement lock unlock animation for the button
       child: RawMaterialButton(
         elevation: 0,

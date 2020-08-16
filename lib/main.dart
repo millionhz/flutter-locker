@@ -5,23 +5,37 @@ import 'model.dart';
 import 'home.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (context) => Locker(),
+      child: MyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<Locker>().loadAudioAssets();
+    context.read<Locker>().setDoubles();
+  }
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
     ]);
 //    SystemChrome.setEnabledSystemUIOverlays([SystemUiOverlay.top]);
-    return ChangeNotifierProvider(
-      create: (context) => Locker(),
-      child: MaterialApp(
-        title: "Locker",
-        debugShowCheckedModeBanner: false,
-        home: MyAppHome(),
-      ),
+    return MaterialApp(
+      title: "Locker",
+      debugShowCheckedModeBanner: false,
+      home: MyAppHome(),
     );
   }
 }

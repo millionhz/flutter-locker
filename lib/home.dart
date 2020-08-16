@@ -17,8 +17,6 @@ class _MyAppHomeState extends State<MyAppHome> {
     super.initState();
     context.read<Locker>().selectColor();
     context.read<Locker>().generatePassCode();
-    context.read<Locker>().loadAudioAssets();
-    context.read<Locker>().setDoubles();
     context.read<Locker>().debugLog();
   }
 
