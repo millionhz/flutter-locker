@@ -19,8 +19,7 @@ class MyRoundedButton extends StatelessWidget {
         elevation: 0,
         enableFeedback: false,
         onPressed: () {
-          LockerState lockerState =
-              Provider.of<Locker>(context, listen: false).unlock();
+          LockerState lockerState = context.read<Locker>().unlock();
           if (lockerState == LockerState.unlocked) {
             Navigator.of(context).pushReplacement(PageTransition(
                 child: MyAppHome(),

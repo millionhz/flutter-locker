@@ -39,8 +39,7 @@ class MySlider extends StatelessWidget {
         }
       },
       min: 0,
-      max:
-          Provider.of<Locker>(context, listen: false).maxSliderRange.toDouble(),
+      max: context.watch<Locker>().maxSliderRange.toDouble(),
       initialValue: initialValue,
       appearance: CircularSliderAppearance(
           counterClockwise: true,

@@ -29,9 +29,9 @@ class _MyAppHomeState extends State<MyAppHome> {
   @override
   void initState() {
     super.initState();
-    Provider.of<Locker>(context, listen: false).generatePassCode();
-    Provider.of<Locker>(context, listen: false).loadAudioAssets();
-    Provider.of<Locker>(context, listen: false).setDoubles();
+    context.read<Locker>().generatePassCode();
+    context.read<Locker>().loadAudioAssets();
+    context.read<Locker>().setDoubles();
     context.read<Locker>().debugLog();
     selectColor();
   }
@@ -45,7 +45,24 @@ class _MyAppHomeState extends State<MyAppHome> {
   }
 }
 
-class MyBody extends StatelessWidget {
+class MyBody extends StatefulWidget {
+  @override
+  _MyBodyState createState() => _MyBodyState();
+}
+
+class _MyBodyState extends State<MyBody> {
+  double aInitialDouble = 0;
+  double bInitialDouble = 0;
+  double cInitialDouble = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    aInitialDouble = context.read<Locker>().aDouble;
+    bInitialDouble = context.read<Locker>().bDouble;
+    cInitialDouble = context.read<Locker>().cDouble;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -76,35 +93,35 @@ class MyBody extends StatelessWidget {
           children: <Widget>[
             MySlider(
               size: MediaQuery.of(context).size.width - 50,
-              initialValue: Provider.of<Locker>(context, listen: false).aDouble,
+              initialValue: aInitialDouble,
               onChangedInt: (val) {
-                Provider.of<Locker>(context, listen: false).a = val;
-                Provider.of<Locker>(context, listen: false).playASound();
+                context.read<Locker>().a = val;
+                context.read<Locker>().playASound();
               },
               onChangedDouble: (val) {
-                Provider.of<Locker>(context, listen: false).aDouble = val;
+                context.read<Locker>().aDouble = val;
               },
             ),
             MySlider(
               size: MediaQuery.of(context).size.width - 150,
-              initialValue: Provider.of<Locker>(context, listen: false).bDouble,
+              initialValue: bInitialDouble,
               onChangedInt: (val) {
-                Provider.of<Locker>(context, listen: false).b = val;
-                Provider.of<Locker>(context, listen: false).playBSound();
+                context.read<Locker>().b = val;
+                context.read<Locker>().playBSound();
               },
               onChangedDouble: (val) {
-                Provider.of<Locker>(context, listen: false).bDouble = val;
+                context.read<Locker>().bDouble = val;
               },
             ),
             MySlider(
               size: MediaQuery.of(context).size.width - 250,
-              initialValue: Provider.of<Locker>(context, listen: false).cDouble,
+              initialValue: cInitialDouble,
               onChangedInt: (val) {
-                Provider.of<Locker>(context, listen: false).c = val;
-                Provider.of<Locker>(context, listen: false).playCSound();
+                context.read<Locker>().c = val;
+                context.read<Locker>().playCSound();
               },
               onChangedDouble: (val) {
-                Provider.of<Locker>(context, listen: false).cDouble = val;
+                context.read<Locker>().cDouble = val;
               },
             ),
           ],
