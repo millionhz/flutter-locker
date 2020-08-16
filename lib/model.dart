@@ -20,11 +20,13 @@ class Locker extends ChangeNotifier {
   List<int> _inputCodes = [26, 21, 15];
 
   // double values are for the sliders
-//  List<double> _inputCodesDouble = [26, 21, 15];
-  List<double> _inputCodesDouble = [0, 0, 0];
+  List<double> _inputCodesDouble = [];
 
   void setDoubles() {
-    _inputCodesDouble = _inputCodes.map((int e) => e.toDouble()).toList();
+    if (_inputCodesDouble.isEmpty) {
+      print("Decimal Values Initialized");
+      _inputCodesDouble = _inputCodes.map((int e) => e.toDouble()).toList();
+    }
   }
 
   void debugLog() {
@@ -79,12 +81,8 @@ class Locker extends ChangeNotifier {
   void playBSound() => lowLatencyPlayer(1);
   void playCSound() => lowLatencyPlayer(2);
 
-//  void printForDebug() {
-//    print('inputCodesDouble: $_inputCodesDouble');
-//    print('inputCodes: $_inputCodes');
-//  }
-
   void loadAudioAssets() async {
+    // TODO: remove debug printing
     dynamic x =
         await _player.loadAll([_soundA, _soundB, _correctSound, _wrongSound]);
     print(x);
@@ -110,8 +108,7 @@ class Locker extends ChangeNotifier {
       assert(x <= _maxSliderRange,
           'max value of passcode is more than max value of the sliders');
     }
-
-    print(_passCode);
+//    print(_passCode);
   }
 
   LockerState unlock() {
@@ -122,11 +119,10 @@ class Locker extends ChangeNotifier {
       }
     }
     if (x == 3) {
-      _player.play(_correctSound);
-//      generatePassCode();
+      _player.play(_correctSound, mode: PlayerMode.LOW_LATENCY);
       return LockerState.unlocked;
     } else {
-      _player.play(_wrongSound);
+      _player.play(_wrongSound, mode: PlayerMode.LOW_LATENCY);
       return LockerState.locked;
     }
   }

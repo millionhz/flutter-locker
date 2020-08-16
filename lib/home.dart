@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'color_control.dart';
 import 'package:provider/provider.dart';

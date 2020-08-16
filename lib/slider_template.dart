@@ -29,7 +29,7 @@ class MySlider extends StatelessWidget {
         // use the initialValue at the start to avoid the glitched initial
         // slider sounds
         // dart was not letting me initialize the prevValue with the initialValue
-        // (some not static method error) so I figured this trick out where I have
+        // (it raises a not static method error) so I figured this trick out where I have
         // the prevValue as null and perform a null check and if its null I  use
         // initialValue. the null is overwritten when the if block runs
         if (roundedVal !=
