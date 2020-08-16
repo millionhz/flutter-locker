@@ -16,7 +16,8 @@ class Locker extends ChangeNotifier {
 
   final int _maxSliderRange = 40;
 
-  // _inputCodes is also the initial values of the sliders
+  // _inputCodes (converted to doubles in _inputCodesDouble) are also the
+  // initial values of the sliders
   List<int> _inputCodes = [26, 21, 15];
 
   // double values are for the sliders
@@ -104,7 +105,6 @@ class Locker extends ChangeNotifier {
       assert(x <= _maxSliderRange,
           'max value of passcode is more than max value of the sliders');
     }
-//    print(_passCode);
   }
 
   LockerState unlock() {
