@@ -31,6 +31,8 @@ class _MyAppHomeState extends State<MyAppHome> {
     super.initState();
     Provider.of<Locker>(context, listen: false).generatePassCode();
     Provider.of<Locker>(context, listen: false).loadAudioAssets();
+    Provider.of<Locker>(context, listen: false).setDoubles();
+    context.read<Locker>().debugLog();
     selectColor();
   }
 

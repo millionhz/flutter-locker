@@ -18,7 +18,18 @@ class Locker extends ChangeNotifier {
   List<int> _inputCodes = [26, 21, 15];
 
   // double values are for the sliders
-  List<double> _inputCodesDouble = [26, 21, 15];
+//  List<double> _inputCodesDouble = [26, 21, 15];
+  List<double> _inputCodesDouble = [0, 0, 0];
+
+  void setDoubles() {
+    _inputCodesDouble = _inputCodes.map((int e) => e.toDouble()).toList();
+  }
+
+  void debugLog() {
+    print(_inputCodes);
+    print(_inputCodesDouble);
+    print(_passCode);
+  }
 
   List<int> _passCode = [0, 0, 0];
 
@@ -71,8 +82,10 @@ class Locker extends ChangeNotifier {
 //    print('inputCodes: $_inputCodes');
 //  }
 
-  void loadAudioAssets() {
-    _player.loadAll([_soundA, _soundB, _correctSound, _wrongSound]);
+  void loadAudioAssets() async {
+    dynamic x =
+        await _player.loadAll([_soundA, _soundB, _correctSound, _wrongSound]);
+    print(x);
   }
 
   void lowLatencyPlayer(int index) {
