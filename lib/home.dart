@@ -13,27 +13,14 @@ class MyAppHome extends StatefulWidget {
 }
 
 class _MyAppHomeState extends State<MyAppHome> {
-  // selectColor can be moved to model but im going to leave it here for now
-  void selectColor() {
-    // to prevent color scheme repetition
-    while (newIndex == indexInUse) {
-      newIndex = Random().nextInt(kColorList.length);
-    }
-    indexInUse = newIndex;
-    List<Color> chosenColorSet = kColorList[indexInUse];
-    kLight = chosenColorSet[0];
-    kDark = chosenColorSet[1];
-    kDarkLow = chosenColorSet[2];
-  }
-
   @override
   void initState() {
     super.initState();
+    context.read<Locker>().selectColor();
     context.read<Locker>().generatePassCode();
     context.read<Locker>().loadAudioAssets();
     context.read<Locker>().setDoubles();
     context.read<Locker>().debugLog();
-    selectColor();
   }
 
   @override

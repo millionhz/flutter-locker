@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 import 'package:audioplayers/audio_cache.dart';
 
+import 'color_control.dart';
+
 class Locker extends ChangeNotifier {
   final _player = AudioCache();
 
@@ -127,6 +129,18 @@ class Locker extends ChangeNotifier {
       _player.play(_wrongSound);
       return LockerState.locked;
     }
+  }
+
+  void selectColor() {
+    // to prevent color scheme repetition
+    while (newIndex == indexInUse) {
+      newIndex = Random().nextInt(kColorList.length);
+    }
+    indexInUse = newIndex;
+    List<Color> chosenColorSet = kColorList[indexInUse];
+    kLight = chosenColorSet[0];
+    kDark = chosenColorSet[1];
+    kDarkLow = chosenColorSet[2];
   }
 }
 
