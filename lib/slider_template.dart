@@ -24,6 +24,7 @@ class MySlider extends StatelessWidget {
   Widget build(BuildContext context) {
     return SleekCircularSlider(
       onChange: (val) {
+//        context.read<Locker>().debugLog();
         onChangedDouble(val);
 
         int roundedVal = val.round();

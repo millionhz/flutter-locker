@@ -18,8 +18,6 @@ const List<List<Color>> kColorList = [
   [Color(0xFF735960), Color(0xFFffcad4), Color(0x66ffcad4)],
   [Color(0xFFf1faee), Color(0xFF264653), Color(0x66264653)],
   [Color(0xFF264653), Color(0xFFf1faee), Color(0x66f1faee)],
-  [Color(0xFFfadde1), Color(0xFFff5d8f), Color(0x66ff5d8f)],
-  [Color(0xFFff5d8f), Color(0xFFfadde1), Color(0x66fadde1)],
   [Color(0xFFfff9ec), Color(0xFF5d2a42), Color(0x665d2a42)],
   [Color(0xFF5d2a42), Color(0xFFfff9ec), Color(0x66fff9ec)],
 ];
