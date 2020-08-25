@@ -25,7 +25,7 @@ class Locker extends ChangeNotifier {
 
   void setDoubles() {
     if (_inputCodesDouble.isEmpty) {
-      print("Decimal Values Initialized");
+//      print("Decimal Values Initialized");
       _inputCodesDouble = _inputCodes.map((int e) => e.toDouble()).toList();
     }
   }
