@@ -24,7 +24,7 @@ dependencies:
   page_transition: ^1.1.6
   provider: ^4.3.1
   sleek_circular_slider: ^1.1.0
-  audioplayers: ^0.15.1
+  audioplayers: ^0.16.0
   flutter:
     sdk: flutter
 

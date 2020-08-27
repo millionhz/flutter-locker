@@ -82,7 +82,10 @@ class Locker extends ChangeNotifier {
   void playCSound() => lowLatencyPlayer(2);
 
   void loadAudioAssets() async {
-    await _player.loadAll([_soundA, _soundB, _correctSound, _wrongSound]);
+    //await _player.loadAll([_soundA, _soundB, _correctSound, _wrongSound]);
+    for (String audio in [_soundA, _soundB, _correctSound, _wrongSound]) {
+      await _player.play(audio, volume: 0, mode: PlayerMode.LOW_LATENCY);
+    }
   }
 
   void lowLatencyPlayer(int index) {
