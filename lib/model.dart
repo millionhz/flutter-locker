@@ -127,18 +127,6 @@ class Locker extends ChangeNotifier {
     }
   }
 
-  // LockerState unlock() {
-  //   for (int i = 0; i < _inputCodes.length; i++) {
-  //     if (_inputCodes[i] != _passCode[i]) {
-  //       _player.play(_wrongSound, mode: PlayerMode.LOW_LATENCY);
-  //       return LockerState.locked;
-  //     }
-  //   } else {
-  //     _player.play(_correctSound, mode: PlayerMode.LOW_LATENCY);
-  //     return LockerState.unlocked;
-  //   }
-  // }
-
   void selectColor() {
     // to prevent color scheme repetition
     while (newIndex == indexInUse) {
