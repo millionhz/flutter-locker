@@ -15,6 +15,7 @@ class _MyAppHomeState extends State<MyAppHome> {
   @override
   void initState() {
     super.initState();
+    // check for first run using an if statement
     context.read<Locker>().selectColor();
     context.read<Locker>().generatePassCode();
 //    context.read<Locker>().debugLog();

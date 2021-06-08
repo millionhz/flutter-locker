@@ -81,6 +81,8 @@ class Locker extends ChangeNotifier {
   void playBSound() => lowLatencyPlayer(1);
   void playCSound() => lowLatencyPlayer(2);
 
+// play sound function can be changed into a single playSound funciton that takes in the slider number
+
   void loadAudioAssets() async {
     //await _player.loadAll([_soundA, _soundB, _correctSound, _wrongSound]);
     for (String audio in [_soundA, _soundB, _correctSound, _wrongSound]) {
@@ -124,6 +126,18 @@ class Locker extends ChangeNotifier {
       return LockerState.locked;
     }
   }
+
+  // LockerState unlock() {
+  //   for (int i = 0; i < _inputCodes.length; i++) {
+  //     if (_inputCodes[i] != _passCode[i]) {
+  //       _player.play(_wrongSound, mode: PlayerMode.LOW_LATENCY);
+  //       return LockerState.locked;
+  //     }
+  //   } else {
+  //     _player.play(_correctSound, mode: PlayerMode.LOW_LATENCY);
+  //     return LockerState.unlocked;
+  //   }
+  // }
 
   void selectColor() {
     // to prevent color scheme repetition

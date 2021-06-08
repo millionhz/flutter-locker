@@ -23,7 +23,9 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     context.read<Locker>().loadAudioAssets();
+    // load past data(passcode, color, and input_codes) from local storage
     context.read<Locker>().setDoubles();
+    // set colors
   }
 
   @override
